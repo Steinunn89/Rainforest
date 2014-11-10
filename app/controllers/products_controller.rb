@@ -1,4 +1,7 @@
 class ProductsController < ApplicationController
+
+  # before_action: ensure_logged_in, except: [:show, :index]
+  
   def index
   	@products = Product.all
   end
