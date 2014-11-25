@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to products_url, notice: "Signed up!"
     else
+    	flash.now[:alert] = "Something went wrong"
       render "new"
     end
   end

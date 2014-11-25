@@ -1,13 +1,31 @@
-<h1>Products (<%= @products.length %>)</h1>
-
-<%= link_to "New Product", new_product_path %>
-<% @products.each do |product| %>
-
-<p><%= link_to product.name, "/products/#{product.id}" %> 
-<br>
-<%= product.description %>
-<br>
-$<%= product.formatted_price %>
-</p>
-
+<%= form_tag products_path, method: :get, id: 'search-form' do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search" %>
 <% end %>
+
+<div id="products">
+<h1>Products (<%= @products.length %>)</h1>	
+  <%= render @products %>
+</div>
+
+<script type="text/javascript">
+  // function display_search_results() {
+  //   // readyState === 4 means that the asynchronous request completed successfully
+  //   if (this.readyState === 4) {
+  //     console.log(this);
+  //     document.getElementById('products').innerHTML = this.responseText;
+  //   }
+  // }
+
+  // var form = document.getElementById('search-form');
+  // form.addEventListener('submit', function(event) {
+  //   event.preventDefault();
+  //   var searchValue = document.getElementById('search').value;
+
+  //   var xhr = new XMLHttpRequest();
+  //   xhr.onload = display_search_results;
+  //   xhr.open('GET', '/products?search=' + searchValue, true);
+  //   xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+  //   xhr.send();
+  // });
+</script>
