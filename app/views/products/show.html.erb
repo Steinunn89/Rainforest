@@ -19,17 +19,9 @@ $<%= @product.formatted_price %>
   <h4>New Review</h4>
 
   <%= form_for([@product, @review], :remote => true) do |f| %>
-    <% if @review.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
-
-        <ul>
-        <% @review.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+  <div id="review-form-errors">
+    <%= render :partial => "/products/review_form_errors" %>
+  </div>
 
     <div class="field">
       <%= f.label :comment %><br />
@@ -47,9 +39,9 @@ $<%= @product.formatted_price %>
   <h3>Reviews</h3>
 
   <p>Reviews for <%= @product.name %></p>
-<div id="review-list">
-<%= render :partial => "reviews" %>  
-</div>
+  <div id="review-list">
+    <%= render :partial => "reviews" %>  
+  </div>
 
 
 
