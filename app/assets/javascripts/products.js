@@ -3,13 +3,22 @@ $(document).on('ready page:load', function() {
     event.preventDefault();
     var searchValue = $('#search').val();
 
-     $.get('/products?search=' + searchValue)
-      .done(function(data){
-        console.log(data);
-        $('#products').html(data);
-      });
+     // $.get('/products?search=' + searchValue)
+     //  .done(function(data){
+     //    console.log(data);
+     //    $('#products').html(data);
+     //  });
+    $.getScript('/products?search=' + searchValue)
   });
  
+// $(document).on('ready page:load', function() {
+//   $('#search-form').submit(function(event) {
+//     event.preventDefault();
+//     var searchValue = $('#search').val();
+
+//      $.getScript('/products?search=' + searchValue);
+//   });
+
      if ($('.pagination').length) {
     $(window).scroll(function() {
       var url = $('.pagination span.next').children().attr('href');
